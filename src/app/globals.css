@@ -1,0 +1,35 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles using your color palette */
+@layer base {
+  body {
+    background-color: #e3eed4;
+    color: #0f2a1d;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e3eed4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #375534;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0f2a1d;
+}
