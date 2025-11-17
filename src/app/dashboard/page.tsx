@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -214,6 +213,9 @@ export default function DashboardPage() {
     console.log('Download analysis:', analysis);
   };
 
+  type PlanType = "free" | "premium" | null;
+
+
   const renderTabContent = () => {
     switch (activeTab) {
       case 'overview':
@@ -337,7 +339,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Premium Upgrade Banner (for free users) */}
-        {userPlan === 'free' && (
+        {userPlan === ('free' as any) && (
           <div className="mt-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl p-6 text-white">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div className="flex items-center gap-4">
