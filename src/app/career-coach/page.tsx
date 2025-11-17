@@ -10,8 +10,30 @@ import CareerRoadmap from '@/components/career-coach/CareerRoadmap';
 import CertificationSuggestions from '@/components/career-coach/CertificationSuggestions';
 import LearningPathways from '@/components/career-coach/LearningPathways';
 
+// Define TypeScript interfaces
+interface CareerPath {
+  id: string;
+  title: string;
+  match: number;
+  description: string;
+  requiredSkills: string[];
+  salaryRange: { min: number; max: number; currency: string };
+  growth: string;
+  demand: 'high' | 'medium' | 'low';
+  timeline: string;
+  locations: string[];
+}
+
+interface ProfileData {
+  skills: string[];
+  education: string;
+  experience: string;
+  interests: string[];
+  careerGoals: string;
+}
+
 // Sample data
-const sampleCareerRecommendations = [
+const sampleCareerRecommendations: CareerPath[] = [
   {
     id: '1',
     title: 'Frontend Developer',
@@ -20,7 +42,7 @@ const sampleCareerRecommendations = [
     requiredSkills: ['JavaScript', 'React', 'HTML/CSS', 'TypeScript'],
     salaryRange: { min: 60000, max: 120000, currency: '$' },
     growth: 'Very High',
-    demand: 'high' as const,
+    demand: 'high',
     timeline: '6-12 months',
     locations: ['Remote', 'San Francisco', 'New York', 'Austin']
   },
@@ -32,7 +54,7 @@ const sampleCareerRecommendations = [
     requiredSkills: ['JavaScript', 'Node.js', 'React', 'Database', 'API Design'],
     salaryRange: { min: 80000, max: 140000, currency: '$' },
     growth: 'High',
-    demand: 'high' as const,
+    demand: 'high',
     timeline: '12-18 months',
     locations: ['Hybrid', 'Seattle', 'Boston', 'Chicago']
   },
@@ -44,7 +66,7 @@ const sampleCareerRecommendations = [
     requiredSkills: ['Design Systems', 'Figma', 'CSS', 'JavaScript', 'User Research'],
     salaryRange: { min: 70000, max: 110000, currency: '$' },
     growth: 'Medium',
-    demand: 'medium' as const,
+    demand: 'medium',
     timeline: '8-14 months',
     locations: ['Remote', 'Los Angeles', 'Miami', 'Denver']
   }
@@ -160,16 +182,16 @@ const sampleLearningResources = [
 ];
 
 export default function CareerCoachPage() {
-  const [profileData, setProfileData] = useState(null);
-  const [selectedCareer, setSelectedCareer] = useState(null);
+  const [profileData, setProfileData] = useState<ProfileData | null>(null);
+  const [selectedCareer, setSelectedCareer] = useState<CareerPath | null>(null);
   const [activeTab, setActiveTab] = useState<'recommendations' | 'roadmap' | 'certifications' | 'learning'>('recommendations');
 
-  const handleProfileUpdate = (data: any) => {
+  const handleProfileUpdate = (data: ProfileData) => {
     setProfileData(data);
     setActiveTab('recommendations');
   };
 
-  const handleCareerSelect = (career: any) => {
+  const handleCareerSelect = (career: CareerPath) => {
     setSelectedCareer(career);
     setActiveTab('roadmap');
   };
