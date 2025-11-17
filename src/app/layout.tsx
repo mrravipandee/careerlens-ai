@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AI Resume Analyzer & Career Coach',
+  title: 'CareerLens - AI-Powered Resume Analyzer & Job Matcher',
   description: 'Smart web-based tool for resume analysis and career guidance using AI',
 };
 
