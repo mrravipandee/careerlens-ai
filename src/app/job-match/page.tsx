@@ -198,9 +198,16 @@ const sampleImprovementSteps = [
 ];
 
 export default function JobMatchPage() {
+
+  interface JobMatch {
+  title: string;
+  match: number;
+  description?: string;
+}
+
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [jobData, setJobData] = useState<{ role: string; skills: string[] } | null>(null);
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState<JobMatch | null>(null);
   const [analysisComplete, setAnalysisComplete] = useState(false);
 
   const handleResumeUpload = (file: File) => {
@@ -368,7 +375,7 @@ export default function JobMatchPage() {
                   <MatchScoreAnalysis
                     selectedJob={selectedJob}
                     breakdown={sampleBreakdown}
-                    overallMatch={selectedJob.match}
+                    overallMatch={selectedJob?.match ?? 0}
                   />
                 )}
               </div>
