@@ -1,6 +1,7 @@
 'use client';
 
 import { CheckCircle, XCircle, AlertCircle, TrendingUp, Target } from 'lucide-react';
+import { JobMatch } from "@/types/jobMatch";
 
 interface MatchBreakdown {
   category: string;

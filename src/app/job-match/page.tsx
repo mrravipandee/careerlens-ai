@@ -10,6 +10,8 @@ import MatchScoreAnalysis from '@/components/job-match/MatchScoreAnalysis';
 import MissingKeywordSuggestions from '@/components/job-match/MissingKeywordSuggestions';
 import ImprovementSteps from '@/components/job-match/ImprovementSteps';
 
+import { JobMatch } from "@/types/jobMatch";
+
 // Sample data
 const sampleJobMatches = [
   {
@@ -198,12 +200,6 @@ const sampleImprovementSteps = [
 ];
 
 export default function JobMatchPage() {
-
-  interface JobMatch {
-  title: string;
-  match: number;
-  description?: string;
-}
 
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [jobData, setJobData] = useState<{ role: string; skills: string[] } | null>(null);

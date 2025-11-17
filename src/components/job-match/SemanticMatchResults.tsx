@@ -1,20 +1,7 @@
 'use client';
 
 import { Target, CheckCircle, XCircle, TrendingUp, MapPin, DollarSign, Clock } from 'lucide-react';
-
-interface JobMatch {
-  id: string;
-  title: string;
-  company: string;
-  match: number;
-  location: string;
-  salary: string;
-  type: string;
-  skills: string[];
-  description: string;
-  posted: string;
-  url: string;
-}
+import { JobMatch } from "@/types/jobMatch";
 
 interface MatchAnalysis {
   skillMatches: string[];
@@ -145,7 +132,7 @@ const SemanticMatchResults: React.FC<SemanticMatchResultsProps> = ({
             <div>
               <h4 className="text-sm font-medium text-primary mb-2">Key Skills:</h4>
               <div className="flex flex-wrap gap-2">
-                {job.skills.slice(0, 4).map((skill, index) => (
+                {(job.skills ?? []).slice(0, 4).map((skill, index) => (
                   <span
                     key={index}
                     className={`px-2 py-1 rounded text-xs ${
@@ -159,9 +146,9 @@ const SemanticMatchResults: React.FC<SemanticMatchResultsProps> = ({
                     {skill}
                   </span>
                 ))}
-                {job.skills.length > 4 && (
+                {(job.skills ?? []).length > 4 && (
                   <span className="text-secondary text-xs">
-                    +{job.skills.length - 4} more
+                    +{(job.skills ?? []).length - 4} more
                   </span>
                 )}
               </div>
